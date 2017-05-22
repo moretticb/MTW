@@ -247,7 +247,7 @@ window.onhashchange = function(){
 function embedPrompt(embedIcon){
 	var ett = document.getElementById("shareTooltip");
 	var txtArea = ett.getElementsByTagName("textarea")[0];
-	txtArea.value = '<iframe width="600" height="560" src="http://www.moretticb.com/MTW/embed.html'+generateHash()+'" style="max-width: 600px; width: 100%; height: 568px;" frameborder="0"></iframe>';
+	txtArea.value = '<iframe width="600" height="560" src="http://www.moretticb.com/MTW/Tool/embed.html'+generateHash()+'" style="max-width: 600px; width: 100%; height: 568px;" frameborder="0"></iframe>';
 	ett.style.display = "inline-block";
 	ett.style.left = (embedIcon.offsetLeft + embedIcon.offsetWidth/2 - ett.offsetWidth/2)+"px";
 	ett.style.top = (embedIcon.offsetHeight + embedIcon.offsetTop)+"px";
