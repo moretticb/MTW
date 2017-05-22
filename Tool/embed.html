@@ -1,0 +1,242 @@
+<!----------------------------------------------------------------------------
+
+                embed.html - MLP Topology Workbench
+  Copyright (c) 2016 Caio Benatti Moretti <caiodba@gmail.com>
+                    http://www.moretticb.com/
+
+  Last update: 13 April 2017
+
+  This is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This software is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+---------------------------------------------------------------------------->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="stylesheet" type="text/css" href="mtwstyles.css" />
+<script type="text/javascript" src="mtwscripts.js"></script>
+<script type="text/javascript" src="mlp.js"></script>
+
+<title>MLP Topology Workbench</title>
+</head>
+<body>
+
+<div class="wholeContainer">
+
+<div class="shareTooltip" id="shareTooltip">
+	<div class="closeBtn" onclick="hideEmbedPrompt()"></div>
+	<div class="tooltipMsg">copy the markup below and paste in your HTML document:</div>
+	<textarea id="tooltipCode"></textarea>
+</div>
+
+<div class="viewportTabs">
+	<a href="http://www.moretticb.com/" target="_blank"><div class="leftLogo" id="leftLogo"></div></a>
+
+	<div class="tabSel" id="topoTab" onclick="changeTab(this);" title="Shift+Q"><div class="tabLeft"></div> topology <div class="tabRight"></div></div><!--
+	--><div class="tabIdle" id="cmdTab" onclick="changeTab(this);" title="Shift+W"><div class="tabLeft"></div> command <div class="tabRight"></div></div><!--
+	--><div class="tabIdle" id="trainTab" onclick="changeTab(this);" title="Shift+E"><div class="tabLeft"></div> training <div class="tabRight"></div></div><!--
+	--><div class="tabIdle" id="visualizeTab" onclick="changeTab(this);" title="Shift+R"><div class="tabLeft"></div> visualize <div class="tabRight"></div></div>
+	
+	<div class="embedBtn" title="embedded iframe" onclick="embedPrompt(this)"></div>
+	<div class="txt">MLP Topology Workbench</div>
+</div><!--
+--><div class="previewViewport" id="viewport">
+    <div class="preview" id="topoContent"></div>
+    <div class="cmd" id="cmdContent" style="display:none;">
+        <p><span class="prompt">user@pc</span> $ <span id="cmdTrain">command</span><br>Here comes the output of the <b>training</b> step.</p>
+	<p><span class="prompt">user@pc</span> $ <span id="cmdTest">command</span><br>Here comes the output of the <b>test</b> step.</p>
+	<textarea class="saveStateArea" id="saveStateArea" onkeyup="checkToLoad();" title="Click to insert weights"></textarea>
+    </div>
+    <div class="trainContent" id="trainContent" style="display: none;">
+
+		<div class="trainPanel">
+		
+			<div class="trainTooltip" id="trainTooltip">
+				<div class="trainTooltipL" id="trainTooltipL"></div>
+				<div class="trainTooltipM" id="trainTooltipM">
+					<div class="tCanvasDiv" id="tCanvasDiv">
+						<canvas id="tSpaceCanvas" width="25" height="25"></canvas>
+						<canvas id="tPointCanvas" width="84" height="84"></canvas>
+					</div>
+				</div>
+				<div class="trainTooltipR" id="trainTooltipR"></div>
+			</div>
+
+			<div class="dataToggle" id="dataToggle" onclick="toggleData(this);" title="Dataset"></div>
+			<!-- Despite of the public domain, let-me give the due credits. The original neuron icon was created by Amelia Wattenberger. Available at https://thenounproject.com/term/neuron/79860/ -->
+			<div class="eyeBtn2" id="eyeBtn2" onclick="captureNeuron();" title="Visualize (Shift+V)"></div>
+			<div class="mseBar" id="mseBar" title="Click to zoom" onclick="trainConf.initError = undefined;">
+				<div class="barDiv" id="barDiv">
+					<div class="mseTop" id="mseTop"></div>
+					<div class="mseMid" id="mseMid"></div>
+					<div class="mseBot" id="mseBot"></div>
+				</div>
+			</div>
+
+			<div class="generalCaption" id="generalCaption" style="display: none;"></div>
+			<div class="netAreaCaption" id="netAreaCaption"></div>
+			<div class="datasetCaption" id="datasetCaption" style="display: none;">Dataset</div>
+			<div class="netAreaPane" id="netAreaPane">
+				<div class="netArea" id="netArea"></div>
+			</div>
+			<div class="datasetArea" id="datasetArea" style="display: none;"><textarea id="datasetData" onkeydown="return notifyUpdate() || isArrowKey();">
+0.0,0.0,0.0
+0.0,1.0,1.0
+1.0,0.0,1.0
+1.0,1.0,0.0</textarea></div>
+
+		
+		</div>
+
+    </div>
+
+    <div class="visualizeContent" id="visualizeContent" style="display:none;">
+		<div id="plotCaption" class="generalCaption" style="width: 100%; max-width: 100%;">this is a caption</div><!--
+		--><div id="canvasDiv">
+			<canvas id="spaceCanvas" width="50" height="50"></canvas>
+			<canvas id="pointCanvas" width="300" height="300"></canvas>
+		</div>
+    </div>
+</div>
+<div class="panel" id="panel">
+	<div class="topologyTools" id="topologyTools">
+		<div id="layerAdjustContainer"></div>
+		<fieldset>
+			<legend><div class="tabLeft"></div> verbose <div class="tabRight"></div></legend>
+			<table>
+				<tr>
+					<td><label class="chkLbl" id="epochsLbl" onmousedown="updateChk(this);" onclick="drawCommands();"><input type="checkbox" id="epochs" />total epochs</label></td>
+					<!--<td><label><input type="checkbox" id="epochs" onclick="drawCommands()" />total epochs</label></td>-->
+					<td><label class="chkLbl" id="mseLbl" onmousedown="updateChk(this);" onclick="drawCommands();"><input type="checkbox" id="mse" />mean square error</label></td>
+					<!--<td><label><input type="checkbox" id="mse" onclick="drawCommands()" />mean square error (mse)</label></td>-->
+					<td><label class="chkLbl_" id="weightsLbl" onmousedown="updateChk(this);" onclick="drawCommands();"><input type="checkbox" checked="true" id="weights"/>synaptic weights</label></td>
+					<!--<td><label><input type="checkbox" id="weights" checked="true" onclick="drawCommands()" />synaptic weights</label></td>-->
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+	<div class="trainTools" id="trainTools" style="display: none;">
+
+		<div class="layerAdjust" style="width: 100%; height: 45px; float: left; margin-top: 10px;">
+			<div style="display: inline-block; margin-top: 10px; width: 90%;">
+				<div style=" float: left; line-height: 23px;">status</div>
+				<table class="toolsTable" style="float: right; width: 80%;">
+					<tr>
+						<td id="netState" style="text-align: right;"></td>
+						<th>epoch</th><td>#<input class="toolsInput" id="epochNum" type="text" value="1" disabled="true"/></td>
+						<th>mse</th><td><input class="toolsInput" id="mseNum" type="text" disabled="true" value="0.0" title="Mean Squared Error" style="width: 100px;"/></td>
+						<th><span style="font-variant: initial;">&epsilon;<span></th><td><input class="toolsInput" type="text" id="epsilonTxt" title="Precision" value="0.01" onkeydown="return notifyUpdate() || isArrowKey();"/>
+					</tr>
+				</table>
+			</div>
+		</div>  
+
+		<div class="layerAdjust" style="width: 44%; margin: -9px 2% 0px 4%;">
+			<div class="leftNormal"></div>
+			<div style="display: inline-block; min-width: 100px; margin-top: 10px; width: 70%;">
+				training
+				<div style="width: 100%;">
+					<table class="toolsTable" style="width: 100%;">
+						<tr><th colspan="4" style="text-align: center;">parameters</th></tr>
+						<tr>
+							<th><span style="font-variant: initial;">&eta;</span></th><td><input type="text" class="toolsInput" id="etaNum" title="Learning rate" value="0.1" onkeydown="return notifyUpdate() || isArrowKey();" />
+							<th><span style="font-variant: initial;">&alpha;</span></th><td><input type="text" class="toolsInput" id="alphaNum" title="Momentum" value="-" disabled="true" />
+						</tr>
+						<tr><td colspan="4" style="text-align: center;"><div class="button" id="updateParBtn" onmouseup="if(isBtnDisabled(this)) return false; updateTrainConfParams();"><div class="buttonL">&nbsp;</div><div class="buttonM"><div class="marker" id="updMark"></div>update parameters</div><div class="buttonR">&nbsp;</div></div></td></tr>
+
+						<tr><th colspan="4" style="text-align: center;">control</th></tr>
+						<tr>
+							<!--<td colspan="2"><div class="button" id="iterateBtn" onmouseup="training(this);"><div class="buttonL">&nbsp;</div><div class="buttonM">iterate</div><div class="buttonR">&nbsp;</div></div></td>
+							<td colspan="2" width: 60%;><label class="chkLbl" id="interruptLbl" onmouseup="updateChk(this)"><input type="checkbox" id="interrupt" />interrupt</label></td>-->
+							<td colspan="4">
+								<div class="button" id="iterateBtn" onmouseup="training(this);" style="float: left;"><div class="buttonL">&nbsp;</div><div class="buttonM">iterate</div><div class="buttonR">&nbsp;</div></div>
+								<label class="chkLbl" id="interruptLbl" onmouseup="updateChk(this)" style="float: right;"><input type="checkbox" id="interrupt" />interrupt</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4"><div class="button" id="instanceBtn" onmouseup="nextInstanceTrain(this);"><div class="buttonL">&nbsp;</div><div class="buttonM" id="nextInstanceText">next instance <sub>1/4</sub></div><div class="buttonR">&nbsp;</div></div></td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+			<div class="rightNormal"></div>
+		</div>  
+
+
+		<div class="layerAdjust" id="layerAdjustTraining" style="width: 44%; margin: -9px 3% 0px 2%;">
+			<div class="leftNormal"></div>
+			<div style="display: inline-block; min-width: 100px; margin-top: 10px; width: 70%">
+				structure
+				<div style="100%;">
+					<table class="toolsTable" style="width: 100%;">
+						<tr><th style="text-align: center;">state</th></tr>
+						<tr><td style="text-align: center;">
+							<div class="button" id="saveStateBtn" onmouseup="saveState();"><div class="buttonL">&nbsp;</div><div class="buttonM">save</div><div class="buttonR">&nbsp;</div></div>
+							<div class="button" id="loadStateBtn" onmouseup="loadState();"><div class="buttonL">&nbsp;</div><div class="buttonM">load</div><div class="buttonR">&nbsp;</div></div>
+						</td></tr>
+						<tr><td style="text-align: center;"><div class="button" id="randStateBtn" onmouseup="randomState();"><div class="buttonL">&nbsp;</div><div class="buttonM">random</div><div class="buttonR">&nbsp;</div></div></td></tr>
+
+						<tr><th colspan="4" style="text-align: center;">topology</th></tr>
+						<tr><td style="text-align: center;"><div class="button" id="saveStateBtn" onmouseup="feedVisual();"><div class="buttonL">&nbsp;</div><div class="buttonM">feed forward</div><div class="buttonR">&nbsp;</div></div></td></tr>
+
+					</table>
+				</div>
+			</div>
+			<div class="rightNormal"></div>
+		</div>  
+
+
+		<div class="layerAdjust" id="layerAdjustVisualize" style="width: 44%; margin: -9px 3% 0px 2%;">
+			<div class="leftNormal"></div>
+			<div style="display: inline-block; min-width: 100px; margin-top: 10px; width: 70%">
+				visualization
+				<div style="100%;">
+					<table class="toolsTable" style="width: 100%;">
+						<tr><th colspan="4" style="text-align: center;">plot</th></tr>
+						<tr>
+							<th>pt size</th><td><input type="text" class="toolsInput" id="ptRadius" title="point size (radius)" value="1" onkeydown="return notifyPlotUpdate() || isArrowKey();" />
+							<td colspan="2" rowspan="2" style="text-align: center;">
+								<!-- Despite of the public domain, let-me give the due credits. The original neuron icon was created by Amelia Wattenberger. Available at https://thenounproject.com/term/neuron/79860/ -->
+								<div class="eyeBtn" id="eyeBtn" title="Select a node (Shift+V)" onclick="captureNeuron()"></div>
+							</td>
+						</tr>
+						<tr>
+							<th>aspect</th><td><input type="text" class="toolsInput" id="aspectRatioNum" title="Aspect ratio" value="0.5" onkeydown="return notifyPlotUpdate() || isArrowKey();" /></td>
+						</tr>
+
+						<tr>
+							<td colspan="2" style="text-align: center;"><label class="chkLbl" id="showPointsLbl" onmouseup="notifyPlotUpdate(); updateChk(this);"><input type="checkbox" id="showPoints" />show points</label></td>
+						</tr>
+						<tr>
+							<td colspan="4" style="white-space: nowrap; text-align: center;">
+								<div class="button" id="plotBtn" onmouseup="plot()"><div class="buttonL">&nbsp;</div><div class="buttonM" id="nextInstanceText"><div class="marker" id="plotMark"></div>plot</div><div class="buttonR">&nbsp;</div></div>
+							</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+			<div class="rightNormal"></div>
+		</div>  
+
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>

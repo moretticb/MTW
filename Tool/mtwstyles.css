@@ -1,0 +1,1011 @@
+
+/****************************************************************************
+**
+**            mtwstyles.css - MLP Topology Workbench
+**  Copyright (c) 2016 Caio Benatti Moretti <caiodba@gmail.com>
+**                    http://www.moretticb.com/
+**
+**  Last update: 13 April 2017
+**
+**  This is free software: you can redistribute it and/or modify
+**  it under the terms of the GNU General Public License as published by
+**  the Free Software Foundation, either version 3 of the License, or
+**  (at your option) any later version.
+**
+**  This software is distributed in the hope that it will be useful,
+**  but WITHOUT ANY WARRANTY; without even the implied warranty of
+**  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+**  GNU General Public License for more details.
+**
+**  You should have received a copy of the GNU General Public License
+**  along with this program. If not, see <http://www.gnu.org/licenses/>.
+**
+****************************************************************************/
+
+
+
+html {
+	margin: 0px 0px 0px 0px;
+}
+
+body {
+	text-align: center;
+	margin: 0px 0px 0px 0px;
+}
+
+.preview{
+	display: inline-block;
+	width: 600px;
+	height: 300px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	letter-spacing: -2px;
+	font-weight: bold;
+	/*background-color: #00F;*/
+}
+
+.nlayer4, .nlayer3, .nlayer2, .nlayer1, .ilayer4, .ilayer3, .ilayer2, .ilayer1, .arrow1, .arrow2, .arrow3, .arrow4{
+	display: inline-block;
+	position: relative; z-index: 1;
+	top: 0%;
+	margin-left: -0.714%;
+	height: 100%;
+	width: 9.857%;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.nlayer4, .nlayer3, .nlayer2, .nlayer1{ background-image: url('neuralLayerSprite.png'); }
+.ilayer4, .ilayer3, .ilayer2, .ilayer1{ background-image: url('inputLayerSprite.png'); text-align: right;}
+.arrow1, .arrow2, .arrow3, .arrow4{ background-image: url('outputArrowsSprite.png'); z-index: 0 !important;}
+.nlayer4,.ilayer4,.arrow4{ background-position: 0px 0px; }
+.nlayer3,.ilayer3,.arrow3{ background-position: 33% 0%; }
+.nlayer2,.ilayer2,.arrow2{ background-position: 66.5% 0%; }
+.nlayer1,.ilayer1,.arrow1{ background-position: 100% 0%; }
+
+.bias {
+	display: inline-block;
+	position: relative;
+	top: 0.2%;
+	left: 30%;
+	width: 20%;
+	height: 8%;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.x1, .x2, .x3, .x4 {
+	display: inline-block;
+	position: relative;
+	top: 0px;
+	width: 92%;
+	height: 10%;
+	text-align: center;
+	line-height: 0%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: right;
+	padding-right: 8%;
+}
+.ilayer1 .x1 { top: 59%;}
+
+.ilayer2 .x1 { top: 47%;}
+.ilayer2 .x2 { top: 73%; left: -100%;}
+
+.ilayer3 .x1 { top: 33%;}
+.ilayer3 .x2 { top: 60.5%; left: -100%;}
+.ilayer3 .x3 { top: 87%; left: -200%;}
+
+.ilayer4 .x1 { top: 25%;}
+.ilayer4 .x2 { top: 52%; left: -100%;}
+.ilayer4 .x4 { top: 89.5%; left: -200%;}
+
+.n1, .n2, .n3, .n4 {
+	display: inline-block;
+	position: relative;
+	top: 0px;
+	width: 100%;
+	height: 20%;
+	text-align: center;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	text-align: center;
+	color: #E7C7AC;
+}
+
+.n1:after, .n2:after, .n3:after, .n4:after {
+	content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.nlayer1 .n1 { top: 45.75%;}
+
+.nlayer2 .n1 { top: 32.5%;}
+.nlayer2 .n2 { top: 59.25%; left: -100%;}
+
+.nlayer3 .n1 { top: 19%;}
+.nlayer3 .n2 { top: 45.75%; left: -100%;}
+.nlayer3 .n3 { top: 72.55%; left: -200%;}
+
+.nlayer4 .n1 { top: 14%;}
+.nlayer4 .n2 { top: 40.5%; left: -100%;}
+.nlayer4 .n3 { top: 65%; left: -200%;}
+.nlayer4 .n4 { top: 78%; left: -200%;}
+
+.w11,.w12,.w13,.w14,.w21,.w22,.w23,.w24,.w31,.w32,.w33,.w34,.w41,.w42,.w43,.w44{
+	display: inline-block;
+	position: relative;
+	top: 0%;
+	margin-left: -4.7143%;
+	z-index: 0;
+	height: 100%;
+	width: 22.2857%;
+	height: 100%;
+	background-image: url('weightSprite.png');
+	background-size: auto 400%;
+	background-repeat: no-repeat;
+	overflow: hidden;
+}
+
+.w44 {background-position: 0% 0%; }
+.w34 {background-position: 33.33% 0%; }
+.w24 {background-position: 66.66% 0%; }
+.w14 {background-position: 100% 0%; }
+
+.w43 {background-position: 0% 33.4%; }
+.w33 {background-position: 33.33% 33.4%; }
+.w23 {background-position: 66.66% 33.4%; }
+.w13 {background-position: 100% 33.4%; }
+
+.w42 {background-position: 0% 66.67%; }
+.w32 {background-position: 33.33% 66.67%; }
+.w22 {background-position: 66.66% 66.67%; }
+.w12 {background-position: 100% 66.67%; }
+
+.w41 {background-position: 0px 100%; }
+.w31 {background-position: 33.33% 100%; }
+.w21 {background-position: 66.66% 100%; }
+.w11 {background-position: 100% 100%; }
+
+.cmd {
+	display: block;
+	width: 100%;
+	background-color: #000;
+	color: #FFF;
+	text-align: left;
+	font-family: "Courier New";
+	padding-bottom: 4px;
+}
+
+.cmd p{
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.prompt {
+	color: #0f0;
+}
+
+.previewViewport {
+	float:left;
+	clear: left;
+	display: inline-block;
+	max-width: 700px;
+	min-width: 455px;
+	width: 100%;
+	background-color: #EFEFEF;
+	text-align: center;
+}
+
+.leftLogo {
+	display: inline-block;
+	width: 42px;
+	height: 20px;
+	background-image: url("cbmLeftLogo.png");
+	background-repeat: no-repeat;
+	background-size: 42px;
+	margin: 0px 5px 0px 0px;
+	float: left;
+}
+
+.viewportTabs {
+	float:left;
+	clear: left;
+	display: inline-block;
+	max-width: 700px;
+	min-width: 455px;
+	width: 100%;
+	height: 20px;
+	background-color: #333;
+	overflow: hidden;
+}
+
+.tabLeft, .tabRight {
+	display: inline-block;
+	width: 7px;
+	height: 15px;
+	background-image: url('./tabRoundedSpr.png');
+	background-repeat: no-repeat;
+	background-size: auto 20px;
+}
+
+.tabLeft { background-position: top left; }
+.tabRight { background-position: top right; }
+
+
+.viewportTabs .tabSel, .viewportTabs .tabIdle {
+	display: inline-block;
+	margin-top: 2px;
+	font-variant: small-caps;
+	float: left;
+	height: 18px;
+}
+
+.viewportTabs .tabSel {
+	background-color: #EFEFEF;
+	font-weight: bold;
+	position: relative;
+	top: 3px;
+	cursor: default;
+}
+
+.viewportTabs .tabIdle {
+	background-color: #CCC !important;
+	color: #000 !important;
+	cursor: pointer;
+}
+
+.viewportTabs .tabIdle:hover {
+	background-color: #DDD;
+}
+
+.viewportTabs .txt {
+	color: #CCC;
+	font-size: 11px;
+	line-height: 20px;
+	padding-right: 5px;
+	float: right;
+}
+
+.viewportTabs .txt a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.viewportTabs .txt a:hover {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+.panel {
+	float: left;
+	clear: left;
+	display: inline-block;
+	background-color: #333;
+	color: #FFF;
+	max-width: 700px;
+	min-width: 455px;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+.layerAdjust {
+	display: inline-block;
+	/*background-color: #0f0;*/
+	width: 25%;
+	height: 159px;
+	position: relative;
+	top: -9px;
+	background-image: url('./balaospr.png');
+	background-size: 41px auto;
+	background-position: 0% 100%;
+	background-repeat: repeat-x;
+	text-align: center;
+	margin-right: 2%;
+	overflow: hidden;
+	font-variant: small-caps;
+	letter-spacing: -1px;
+}
+
+.layerAdjust .middle{
+	display: inline-block;
+	/*background-color: #00f;*/
+	width: 32px;
+	height: 100%;
+	background-image: inherit;
+	background-repeat: no-repeat;
+	background-size: inherit;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.layerAdjust .leftNormal , .layerAdjust .rightNormal,.layerAdjust .leftHole , .layerAdjust .rightHole {
+	display: inline-block;
+	/*background-color: #f00;*/
+	width: 20px;
+	height: 100%;
+	background-image: url('./balaospr.png');
+	background-size: inherit;
+	background-repeat: no-repeat;
+}
+
+.layerAdjust .leftNormal { float:left; background-position: left -321px;}
+.layerAdjust .rightNormal { float:right; background-position: right -321px;}
+
+.layerAdjust .leftHole { float:left; background-position: left -161px;}
+.layerAdjust .rightHole { float:right; background-position: right -161px; overflow: visible; white-space: nowrap;}
+
+.removeBtn, .activationBtn, .linearBtn {
+	display: inline-block;
+	background-image: url('./deleteActivationSpr.png');
+	background-repeat: no-repeat;
+	background-size: auto 40px;
+	height: 20px;
+	margin-top: 135px;
+	position: absolute;
+	z-index: 3;
+}
+
+.removeBtn { background-position: 0px 0px; width: 20px; margin-left: -8px;}
+.activationBtn { background-position: -20px 0px; position: relative; left: -7px; width: 29px; cursor: pointer; }
+.linearBtn { background-position: -20px bottom; position: relative; left: -7px; width: 29px; cursor: pointer; }
+
+.removeBtn:hover {
+	background-position: 0px -20px;
+	cursor: pointer;
+}
+
+.swapBtnContainer {
+	display: inline;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	z-index: 3;
+	margin: 0% 0% 0% -0.7%;
+}
+
+.swapBtn, .plusBtn {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	/*background-color: #0f0;*/
+	background-image: url('./swapPlusSpr.png');
+	background-repeat: no-repeat;
+	background-size: auto 60px;
+	position: relative;
+	top: 55px;
+	left: -15px;
+}
+
+.swapBtn { background-position: left top; }
+.swapBtn:hover { background-position: right top; cursor: pointer; }
+.plusBtn { background-position: left bottom; }
+.plusBtn:hover { background-position: right bottom; cursor: pointer; }
+
+.layerAdjustMiddle {
+	display: inline-block;
+	width: 100%;
+	height: 149px;
+	/*background-color: #0f0;*/
+	position: absolute;
+	z-index: 2;
+	margin-left: -40%;
+	margin-top: 11px;
+}
+
+.up, .down, .upDown, .downDown {
+	display: inline-block;
+	width: 36px;
+	height: 20px;
+	background-image: url('./updown.png');
+	background-repeat: no-repeat;
+	background-size: auto 40px;
+}
+
+.up { background-position: left top; }
+.up:hover { background-position: -36px top; cursor: pointer; }
+.upDown { background-position: -73px top; cursor: pointer; }
+.down { background-position: left bottom; }
+.down:hover { background-position: -36px bottom; cursor: pointer; }
+.downDown { background-position: -73px bottom; cursor: pointer; }
+
+.len {
+	/*background-color: #0f0;*/
+	padding: 5px 0px 5px 0px;
+}
+
+.len input, .toolsInput {
+	font-size: 18pt;
+	text-align: center;
+	background-color: transparent;
+	color: #CCC;
+	border: none;
+	width: 40px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	border-top: 1px solid #212121;
+	border-left: 1px solid #212121;
+}
+
+.toolsInput {
+	text-indent: 3pt;
+	font-size: 16px;
+	text-align: left;
+	width: 55px;
+}
+
+.len input:hover, .len input:focus, .toolsInput:hover, .toolsInput:focus{
+	background-color: #333;
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+}
+
+.counter {
+	padding-top: 20px;
+}
+
+fieldset {
+	display: inline-block;
+	width: 90%;
+	background-color: #212121;
+	border: none;
+	border-top: 1px solid #111;
+	border-left: 1px solid #111;
+	
+}
+
+fieldset legend {
+	font-variant: small-caps;
+	background-color: inherit;
+	padding: 0px 0px 0px 0px;
+	text-align: left;
+}
+
+fieldset table {
+	width: 100%;
+}
+
+/* styles for training tab */
+
+.trainContent, .visualizeContent {
+	float:left;
+	clear: left;
+	display: inline-block;
+	max-width: 700px;
+	min-width: 455px;
+	width: 100%;
+	height: 343px;
+	padding-bottom: 4px;
+	background-color: #EFEFEF;
+	text-align: center;
+}
+
+.trainPanel {
+	
+}
+
+.netArea {
+	padding-top: 10px;
+	display: inline-block;
+	/*height: 100%;*/
+	min-width: 442px;
+	/*background-color: #94F;*/
+}
+
+.netAreaPane, .netAreaCaption, .datasetCaption, .datasetArea , .generalCaption{
+	display: inline-block;
+	width: 90%;
+	max-width: 640px;
+	height: 300px;
+	/*overflow-x: scroll;*/
+	/*background-color: #0f0;*/
+}
+
+.netAreaPane {
+	overflow: auto;
+}
+
+.netAreaPane:hover {
+	/*overflow: scroll;*/
+}
+
+.datasetArea {
+	overflow: hidden;
+	text-align: left;
+	/*background-color: #f00;*/
+	height: 295px;
+}
+
+.datasetArea textarea {
+	width: 99%;
+	height: 290px;
+	font-family: "Courier new";
+	font-size: 13px;
+	background-color: #333;
+	color: #E7C7AC;
+	border: 1px solid #DDD;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	white-space: nowrap;
+}
+
+.netAreaCaption, .datasetCaption, .dataToggle, .netToggle, .generalCaption {
+	width: 70%;
+	max-width: 595px;
+	height: 43px;
+	line-height: 43px;
+	overflow: hidden;
+}
+
+.dataToggle, .netToggle, .eyeBtn2 {
+	display: inline-block;
+	width: 10%;
+	max-width: 43px;
+	float: left;
+	background: url("toggleDataSprite.png");
+	background-size: 86px
+}
+
+.mseBar {
+	float:right;
+	display: inline-block;
+	max-width: 60px;
+	width: 10%;
+	height: 354px;
+
+	/*border-left: 1px solid #CCC;*/
+
+	/*background-color: #f00;*/
+}
+
+.barDiv {
+	display: inline-block;
+	width: 40px;
+	height: 319px;
+	background-image: url("mseBarBorder.png");
+	background-repeat: no-repeat;
+	background-size: 19px;
+	margin-top: 16px;
+	overflow: hidden;
+}
+
+.mseTop, .mseBot {
+	display: inline-block;
+	width: 40px;
+	height: 13px;
+	background-image: url("mseBarTop.png");
+	background-size: 40px;
+	/*background-color: #0f0;*/
+	float: left;
+	clear: left;
+}
+
+.mseBot {
+	background-image: url("mseBarBottom.png");
+}
+
+.mseMid {
+	display: inline-block;
+	width: 40px;
+	height: 293px;
+	max-height: 293px;
+	background-image: url("mseBarMiddle.png");
+	background-size: 40px;
+	background-repeat: repeat-y;
+	/*background-color: #00f;*/
+	float: left;
+	clear: left;
+}
+
+.dataToggle { background-position: right top; }
+.netToggle { background-position: left top; }
+.dataToggle:hover { background-position: right bottom; }
+.netToggle:hover { background-position: left bottom; }
+
+.layerCont, .weightCont, .cCont, .barCont, .ioCont {
+	display: inline-block;
+	float: left;
+}
+
+.layerCont {
+	display: inline-block;
+	/*background-color: #f00;*/
+}
+
+.barCont {
+	width: 3px;
+	margin-top: 13px;
+	padding-top: 3px;
+	background-color: #333;
+}
+
+.biasNode, .neuronNode, .weightCont input, .ioCont input, .cOn, .cOff , .dummyNode{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+
+	float: right;
+	clear: right;
+	margin-bottom: 15px;
+
+	cursor: default;
+}
+
+.cOn, .cOff {
+	width: 15px;
+	height: 3px;
+	margin-top: 13px;
+	margin-bottom: 29px;
+}
+
+.cOn { background-color: #333; }
+.cOff { } 
+
+.biasNode, .neuronNode {
+	background-image: url("structureSprite.png") ;
+	background-size: 60px;
+}
+
+.biasNode {
+	font-size: 11px;
+	text-align: right;
+	/*background-color: #00f;*/	
+	line-height: 45px;
+	white-space: nowrap;
+	color: #E7C7AC;
+}
+
+.neuronNode {
+	line-height: 30px;
+	/*background-color: #0f0;*/
+	background-position: right top;
+	cursor: pointer;
+	color: #E7C7AC;
+}
+
+.neuronNode:hover { font-weight: bold; }
+
+.weightCont input, .ioCont input {
+	width: 98px;
+	height: 20px;
+	margin-top: 4px;
+	margin-bottom: 19px; /* 6 to complete 30, plus bottom 15, minus 2px of borders (top, bottom) */
+	padding: 0px;
+
+	background-color: #DEDEDE;
+	border: 1px solid #CCC;
+	border-top-color: #EFEFEF;
+	border-left-color: #EFEFEF;
+
+	text-align: center;
+	font-size: 11px;
+}
+
+.ioCont input {
+	font-weight: bold;
+	text-align: left;
+
+	width: 40px;
+	padding: 0px 5px 0px 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: 1px solid transparent;
+	
+	background-color: transparent;
+	cursor: text;
+}
+
+.ioCont input:hover {
+	background-color: #DEDEDE;
+}
+
+.ioCont input[class=out] { border-left: 3px solid #CCC; width: 50px; }
+.ioCont input[class=in] { border-right: 3px solid #CCC; text-align: right; width: 50px; }
+.ioCont input[class=in]:focus { border-right-color: #0092EB; }
+
+
+.trainTools {
+	display: inline-block;
+	width: 100%;
+	height: 223px;
+	/*background-color: #0f0;*/
+	
+}
+
+.toolsTable th {
+	text-align: right;
+	font-weight: bold;
+	color: #666;
+	cursor: default;
+	line-height: 0px;
+	padding: 5px 0px 5px 0px;
+}
+
+.toolsTable td {
+	text-align: left;
+	font-variant: initial;
+}
+
+/*.toolsTable input[type=checkbox] {*/
+input[type=checkbox] {
+	border: 3px solid #0092EB;
+	visibility: hidden;
+}
+
+/*.toolsTable .chkLbl, .toolsTable .chkLbl_ {*/
+.chkLbl, .chkLbl_ {
+	letter-spacing: -1px;
+	display: inline-block;
+	color: #0092EB;
+	background-color: #0f0;
+	font-size: 15px;
+	height: 20px;
+	line-height: 20px;
+	text-indent: 3pt;
+	background: url("checkboxSpr.png") no-repeat;
+	cursor: pointer;
+}
+
+/*.toolsTable .chkLbl { background-position: left top; }
+.toolsTable .chkLbl_ { background-position: left bottom; }*/
+.chkLbl { background-position: left top; }
+.chkLbl_ { background-position: left bottom; }
+
+/*.toolsTable .button, .toolsTable .button_ {*/
+.button, .button_ {
+	display: inline-block;
+	color: #0092EB;
+	font-size: 15px;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+/*.toolsTable .button_ {*/
+.button_ {
+	color: #666666;
+	cursor: not-allowed;
+}
+
+/*.toolsTable .button .buttonL,
+.toolsTable .button .buttonM,
+.toolsTable .button .buttonR,
+.toolsTable .button_ .buttonL,
+.toolsTable .button_ .buttonM,
+.toolsTable .button_ .buttonR */
+.button .buttonL,
+.button .buttonM,
+.button .buttonR,
+.button_ .buttonL,
+.button_ .buttonM,
+.button_ .buttonR 
+{
+	display: inline-block;
+	height: 20px;
+}
+
+/*.toolsTable .button:hover .buttonL,
+.toolsTable .button:hover .buttonM,
+.toolsTable .button:hover .buttonR,
+.toolsTable .button_ .buttonL,
+.toolsTable .button_ .buttonM,
+.toolsTable .button_ .buttonR */
+.button:hover .buttonL,
+.button:hover .buttonM,
+.button:hover .buttonR,
+.button_ .buttonL,
+.button_ .buttonM,
+.button_ .buttonR 
+{
+	background-image: url("buttonSpr.png");
+}
+
+/*.toolsTable .button .buttonL,
+.toolsTable .button .buttonR, 
+.toolsTable .button_ .buttonL,
+.toolsTable .button_ .buttonR */
+.button .buttonL,
+.button .buttonR, 
+.button_ .buttonL,
+.button_ .buttonR 
+{
+	background-repeat: no-repeat;
+	width: 10px;
+}
+
+/*.toolsTable .button .buttonL { background-position: 0px top; }
+.toolsTable .button .buttonR { background-position: -10px top; }
+.toolsTable .button .buttonM { padding: 0px 5px 0px 5px; background-position: 0px -20px; }*/
+.button .buttonL { background-position: 0px top; }
+.button .buttonR { background-position: -10px top; }
+.button .buttonM { padding: 0px 5px 0px 5px; background-position: 0px -20px; }
+
+/*.toolsTable .button_ .buttonL { background-position: -20px top; }
+.toolsTable .button_ .buttonR { background-position: -30px top; }
+.toolsTable .button_ .buttonM { padding: 0px 5px 0px 5px; background-position: 0px -40px; }*/
+.button_ .buttonL { background-position: -20px top; }
+.button_ .buttonR { background-position: -30px top; }
+.button_ .buttonM { padding: 0px 5px 0px 5px; background-position: 0px -40px; }
+
+/*.toolsTable .button .buttonM,
+.toolsTable .button_ .buttonM */
+.button .buttonM,
+.button_ .buttonM 
+{
+	background-repeat: repeat-x;
+}
+
+.marker {
+	display: none;
+	width: 8px;
+	height: 8px;
+	background-image: url("rhMarker.png");
+	background-size: 8px;
+}
+
+.saveStateArea {
+	width: 99%;
+	height: 220px;
+	border: none;
+	background-color: transparent;
+	color: #FFF;
+}
+
+.subCaption {
+	position: relative;
+	top: -30px;
+	font-size: 12px;
+}
+
+canvas {
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 300px;
+}
+
+#canvasDiv {
+	display: inline-block;
+}
+
+.embedBtn {
+	display: inline-block;
+	float: left;
+	margin-left: 5px;
+	width: 20px;
+	height: 20px;
+	
+	background-size: 20px;
+	background-image: url("embedBtn.png");
+	background-position: left top;
+}
+
+.embedBtn:hover {
+	background-position: left bottom;
+	cursor: pointer;
+}
+
+.eyeBtn, .eyeBtn2 {
+	display: inline-block;
+	width: 43px;
+	height: 43px;
+	cursor: pointer;
+	
+	/*
+	   Despite of the public domain, let-me give the due credits.
+	   The original neuron icon was created by Amelia Wattenberger.
+	   Available at https://thenounproject.com/term/neuron/79860/
+	*/
+	background-image: url("eyeSpr.png");
+	background-size: 43px;
+	
+	/*background-color: #0f0;*/
+}
+
+.eyeBtn { background-position: left top; }
+.eyeBtn2 { background-position: left bottom; }
+
+.trainTooltip {
+	position: absolute;
+	display: none;
+	/*width: 113px;
+	height: 100px;
+	background-image: url("trainTooltip.png");
+	background-repeat: no-repeat;
+	background-size: 113px;*/
+	
+	/*background-color: #0f0;*/
+	
+}
+
+.trainTooltipL, .trainTooltipM, .trainTooltipR {
+	display: inline-block;
+	height: 100px;
+	background-image: url("trainTooltipSpr.png");
+	background-size: auto 300px;
+	float: left;
+}
+
+.trainTooltipL {
+	width: 19px;
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+
+.trainTooltipR {
+	width: 8px;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+.trainTooltipM {
+	background-position: bottom left;
+}
+
+.tCanvasDiv {
+	display: inline-block;
+	width: 84px;
+	height: 84px;
+	margin-top: 8px;
+}
+
+.shareTooltip {
+	display: none;
+	width: 250px;
+	height: 130px;
+	color: #CCC;
+	font-size: 13px;
+	font-variant: small-caps;
+	
+	padding-top: 13px;
+	
+	background-image: url("shareTooltip.png");
+	background-size: 250px;
+	background-repeat: no-repeat;
+	
+	z-index: 10;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	
+	/*background-color: #0f0;*/
+}
+
+.shareTooltip .closeBtn {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+
+	background-image: url("closeBtnSpr.png");
+	background-size: 20px;
+	background-position: left top;
+	
+	cursor: pointer;
+	float: right;
+	margin-right: 5px;
+	
+	/*background-color: #0f0;*/
+}
+
+.shareTooltip .closeBtn:hover {
+	background-position: left bottom;
+}
+
+.shareTooltip textarea {
+	background-color: transparent;
+	width: 230px;
+	height: 70px;
+	border: none;
+	
+	color: #FFF;
+	font-family: "Courier new";
+}
+
+.shareTooltip .tooltipMsg {
+	display: inline-block;
+	margin-left: 5px;
+	width: 210px;
+	height: 35px;
+}
