@@ -55,7 +55,7 @@ body {
 	overflow: hidden;
 	white-space: nowrap;
 
-	float:left; /* fix for mobile devices */
+	/*float:left;*/ /* fix for mobile devices */
 }
 
 .nlayer4, .nlayer3, .nlayer2, .nlayer1{ background-image: url('neuralLayerSprite.png'); }
@@ -151,7 +151,7 @@ body {
 	background-repeat: no-repeat;
 	overflow: hidden;
 
-	float: left; /* fix for mobile devices */
+	/*float: left;*/ /* fix for mobile devices */
 }
 
 .w44 {background-position: 0% 0%; }
