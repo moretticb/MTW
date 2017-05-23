@@ -138,6 +138,8 @@ window.onload = function(){
 	if(window.location.hash.length > 0){
 		window.onhashchange();
 	}
+
+	document.getElementsByTagName("iframe")[0].contentWindow.onresize();
 }
 
 window.onhashchange = function(){
