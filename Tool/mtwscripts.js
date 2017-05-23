@@ -90,8 +90,11 @@ window.onresize = function(){
 	document.getElementById('cmdContent').style.height = (vp.offsetWidth/2)+"px";
 	
 	if(window.frameElement){
-		window.frameElement.style.height = (topo.offsetHeight+40+document.getElementById('panel').offsetHeight)+"px";
+		var hei = topo.offsetHeight+40+document.getElementById('panel').offsetHeight;
+		if(hei >= 503)
+			window.frameElement.style.height = hei+"px";
 	}
+
 	fixSaveStateArea();
 	fixTrainTab();
 	fixVisualizeTab();
