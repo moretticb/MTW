@@ -339,7 +339,8 @@ function train(topo, dataset, eta, epsilon){
 
 		feed = forward(topo, x_p);
 
-		for(var L=netLen(topo); L>0; L--){ //current layer (index): L-1
+		//Adjusting hidden layers first, because the propagated error comes from the outputs. If adjustment begins from output, the error is not properly backpropagated and convergence lasts longer.
+		for(var L=1; L<=netLen(topo); L++){ //current layer (index): L-1
 
 			var isOutput = L==netLen(topo);
 			var isFirst = L==1;
